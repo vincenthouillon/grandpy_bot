@@ -23,7 +23,7 @@ Clone this repository to your local machine:
 git clone https://github.com/vincenthouillon/grandpy_bot.git
 ```
 
-### Exemple with '**pipenv**'
+### Example with '**pipenv**'
 
 Go to the grandpy_bot folder:
 
