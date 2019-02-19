@@ -6,6 +6,8 @@
 
 Ah, grandfathers ... I do not know you, but mine knew a lot of stories. It was enough for me to say a word to see him gone for hours. "Do you want the address of the post office? Oh yes, it's good, but I've already told you that I helped build it, it was in 1974 and ..." :sleeping:
 
+![Screenshot](grandpy/static/img/screenshot.PNG)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
