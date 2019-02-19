@@ -8,5 +8,6 @@ instance/
 .webassets-cache
 
 # My personal settings
+.pytest_cache
 .vscode
 config.py
