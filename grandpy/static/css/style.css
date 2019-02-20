@@ -1,82 +1,97 @@
+body {
+  margin-bottom: 70px;
+}
 .navbar {
-    background-color: #dddddd;
-    padding-top     : 20px;
+  background-color: #dddddd;
 }
-
+.navbar p {
+  margin-bottom: 0;
+}
 .form-control {
-    border       : 1px solid #eee;
-    margin-bottom: 10px;
+  border: 1px solid #dddddd;
+  margin-bottom: 10px;
 }
-
 .btn-primary {
-    background-color: #5b8caa;
-    border-color    : #5b8caa;
+  background-color: #5b8caa;
+  border-color: #5b8caa;
 }
-
 .btn-primary:hover {
-    background-color: #4a7187;
-    border-color    : #4a7187;
+  background-color: #4a7187;
+  border-color: #4a7187;
 }
-
 #robot {
-    width: 140px;
-    float: left;
+  width: 140px;
+  float: left;
+  margin-bottom: -20px;
 }
-
-h1 {
-    padding-top: 44px;
+header h1 {
+  padding-top: 44px;
 }
-
 header h2 {
-    color     : #5b8caa;
-    font-style: italic;
-    font-size : 1.3em;
-
+  color: #5b8caa;
+  font-style: italic;
+  font-size: 1.2em;
+  font-family: 'Gloria Hallelujah', cursive;
 }
-
-header h2:before {
-    content  : '"';
-    font-size: 1.5em;
+input::placeholder {
+  font-size: 0.8em;
 }
-
-header h2:after {
-    content  : '"';
-    font-size: 1.5em;
-}
-
 #discuss {
-    text-align   : justify;
-    overflow     : auto;
-    height       : 400px;
-    border       : 1px solid #eee;
-    border-radius: 5px;
-    padding      : 10px;
-    margin       : 10px 0;
+  text-align: justify;
+  overflow: auto;
+  height: 400px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
 }
-
 .msg {
-    padding         : 10px 10px 0 10px;
-    line-height     : 14px;
-    margin          : 8px 0;
-    border          : 1px solid #5b8caa;
-    background-color: #5b8caa;
-    color           : white;
-    border-radius   : 5px;
-    display         : inline-block;
+  padding: 10px 10px 0 10px;
+  line-height: 14px;
+  margin: 8px 0;
+  border: 1px solid #5b8caa;
+  background-color: #5b8caa;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
 }
-
 @media screen and (max-width: 768px) {
-    #robot {
-        width     : 60px;
-        margin    : 0;
-    }
-
-    h1 {
-        font-size  : 1.4em;
-        padding-top: 5px;
-    }
-
-    header h2 {
-        font-size: 1em;
-    }
+  #robot {
+    width: 100px;
+  }
+  h1 {
+    font-size: 1.4em;
+    margin-top: -20px;
+  }
+  header h2 {
+    font-size: 1em;
+  }
+  input::placeholder {
+    font-size: 0.6em;
+  }
 }
+@media screen and (max-width: 576px) {
+  header p {
+    text-align: center;
+    width: 80%;
+  }
+  input::placeholder {
+    font-size: 0.6em;
+  }
+  #robot {
+    width: 60px;
+    position: absolute;
+  }
+  h1 {
+    font-size: 1.4em;
+    margin-top: 10px;
+  }
+  header h2 {
+    font-size: 1em;
+    margin-bottom: -10px;
+  }
+  footer p {
+    font-size: 0.8em;
+  }
+}
+/*# sourceMappingURL=style.css.map */
