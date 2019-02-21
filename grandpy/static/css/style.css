@@ -1,45 +1,25 @@
 body {
   margin-bottom: 70px;
 }
-.navbar {
-  background-color: #dddddd;
-}
-.navbar p {
-  margin-bottom: 0;
-}
-.form-control {
-  border: 1px solid #dddddd;
-  margin-bottom: 10px;
-}
-.btn-primary {
-  background-color: #5b8caa;
-  border-color: #5b8caa;
-}
-.btn-primary:hover {
-  background-color: #4a7187;
-  border-color: #4a7187;
-}
 #robot {
-  width: 140px;
+  width: 120px;
   float: left;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
 }
 header h1 {
+  font-size: 1.8em;
   padding-top: 44px;
 }
 header h2 {
   color: #5b8caa;
   font-style: italic;
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: 'Gloria Hallelujah', cursive;
-}
-input::placeholder {
-  font-size: 0.8em;
 }
 #discuss {
   text-align: justify;
   overflow: auto;
-  height: 400px;
+  height: 300px;
   border: 1px solid #dddddd;
   border-radius: 5px;
   padding: 10px;
@@ -55,43 +35,110 @@ input::placeholder {
   border-radius: 5px;
   display: inline-block;
 }
+.form-control {
+  border: 1px solid #dddddd;
+  margin-bottom: 10px;
+}
+input::-webkit-input-placeholder {
+  font-size: 0.8em;
+}
+input:-ms-input-placeholder {
+  font-size: 0.8em;
+}
+input::-ms-input-placeholder {
+  font-size: 0.8em;
+}
+input::placeholder {
+  font-size: 0.8em;
+}
+.btn-primary {
+  background-color: #5b8caa;
+  border-color: #5b8caa;
+}
+.btn-primary:hover {
+  background-color: #4a7187;
+  border-color: #4a7187;
+}
+.navbar {
+  background-color: #dddddd;
+}
+.navbar p {
+  margin-bottom: 0;
+}
 @media screen and (max-width: 768px) {
   #robot {
     width: 100px;
   }
-  h1 {
-    font-size: 1.4em;
+  header h1 {
+    font-size: 1.8em;
     margin-top: -20px;
   }
   header h2 {
     font-size: 1em;
+  }
+  input::-webkit-input-placeholder {
+    font-size: 0.6em;
+  }
+  input:-ms-input-placeholder {
+    font-size: 0.6em;
+  }
+  input::-ms-input-placeholder {
+    font-size: 0.6em;
   }
   input::placeholder {
     font-size: 0.6em;
   }
 }
 @media screen and (max-width: 576px) {
-  header p {
-    text-align: center;
-    width: 80%;
-  }
-  input::placeholder {
-    font-size: 0.6em;
-  }
   #robot {
     width: 60px;
     position: absolute;
   }
-  h1 {
+  header h1 {
     font-size: 1.4em;
-    margin-top: 10px;
+    text-align: center;
+    margin-top: 20px;
   }
   header h2 {
-    font-size: 1em;
-    margin-bottom: -10px;
+    font-size: 0.9em;
+    text-align: center;
+    margin-bottom: -20px;
+  }
+  header p {
+    text-align: center;
+    width: 80%;
+  }
+  #discuss {
+    padding: 0 6px 6px 6px;
+  }
+  .msg {
+    font-size: 0.9em;
+    padding: 2px 4px 0 4px;
+  }
+  input::-webkit-input-placeholder {
+    font-size: 0.6em;
+  }
+  input:-ms-input-placeholder {
+    font-size: 0.6em;
+  }
+  input::-ms-input-placeholder {
+    font-size: 0.6em;
+  }
+  input::placeholder {
+    font-size: 0.6em;
+  }
+  .btn-primary {
+    font-size: 0.9em;
+  }
+  p {
+    font-size: 0.8em;
+    margin-top: 10px;
   }
   footer p {
-    font-size: 0.8em;
+    font-size: 0.7em;
+  }
+  footer p .btn-dark {
+    font-size: 0.9em;
   }
 }
 /*# sourceMappingURL=style.css.map */

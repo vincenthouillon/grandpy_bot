@@ -6,52 +6,28 @@ body {
     margin-bottom: 70px;
 }
 
-.navbar {
-    background-color: @lightgrey;
-    p {
-        margin-bottom: 0;
-    }
-}
-
-.form-control {
-    border       : 1px solid @lightgrey;
-    margin-bottom: 10px;
-}
-
-.btn-primary {
-    background-color: @blue;
-    border-color    : @blue;
-    &:hover {
-        background-color: @darkblue;
-        border-color    : @darkblue;
-    }
-}
-
 #robot {
-    width        : 140px;
+    width        : 120px;
     float        : left;
-    margin-bottom: -20px;
+    margin-bottom: -30px;
 }
 
 header h1 {
+    font-size: 1.8em;
     padding-top: 44px;
 }
 
 header h2 {
     color      : @blue;
     font-style : italic;
-    font-size  : 1.2em;
+    font-size  : 1em;
     font-family: 'Gloria Hallelujah', cursive;
-}
-
-input::placeholder {
-    font-size: 0.8em;
 }
 
 #discuss {
     text-align   : justify;
     overflow     : auto;
-    height       : 400px;
+    height       : 300px;
     border       : 1px solid @lightgrey;
     border-radius: 5px;
     padding      : 10px;
@@ -69,14 +45,39 @@ input::placeholder {
     display         : inline-block;
 }
 
+.form-control {
+    border       : 1px solid @lightgrey;
+    margin-bottom: 10px;
+}
+
+input::placeholder {
+    font-size: 0.8em;
+}
+
+.btn-primary {
+    background-color: @blue;
+    border-color    : @blue;
+    &:hover {
+        background-color: @darkblue;
+        border-color    : @darkblue;
+    }
+}
+
+.navbar {
+    background-color: @lightgrey;
+    p {
+        margin-bottom: 0;
+    }
+}
+
 @media screen and (max-width: 768px) {
 
     #robot {
         width: 100px;
     }
 
-    h1 {
-        font-size : 1.4em;
+    header h1 {
+        font-size : 1.8em;
         margin-top: -20px;
     }
 
@@ -92,32 +93,55 @@ input::placeholder {
 
 @media screen and (max-width: 576px) {
 
+    #robot {
+        width   : 60px;
+        position: absolute;
+    }
+    
+    header h1 {
+        font-size : 1.4em;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    header h2 {
+        font-size    : 0.9em;
+        text-align   : center;
+        margin-bottom: -20px;
+    }
+
     header p {
         text-align: center;
         width     : 80%;
+    }
+
+    #discuss {
+        padding: 0 6px 6px 6px;
+    }
+
+    .msg {
+        font-size: 0.9em;
+        padding  : 2px 4px 0 4px;
     }
 
     input::placeholder {
         font-size: 0.6em;
     }
 
-    #robot {
-        width   : 60px;
-        position: absolute;
+    .btn-primary {
+        font-size: 0.9em;
     }
 
-    h1 {
-        font-size : 1.4em;
+    p {
+        font-size : 0.8em;
         margin-top: 10px;
     }
 
-    header h2 {
-        font-size    : 1em;
-        margin-bottom: -10px;
-    }
-
     footer p {
-        font-size: 0.8em;
+        font-size: 0.7em;
+        .btn-dark {
+            font-size: 0.9em;
+        }
     }
 }
 

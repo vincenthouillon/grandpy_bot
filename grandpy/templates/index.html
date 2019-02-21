@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- <link href="{{ url_for('static', filename='style_contact.css') }}" rel="stylesheet" type="text/css" /> -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../static/img/hv01-white.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/hv01-white.png') }}">
     <title>Grandpy Bot</title>
 </head>
 
@@ -19,7 +21,7 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-12">
                     <p>
-                        <img id="robot" src="../static/img/robot.png" alt="robot clipart">
+                        <img id="robot" src="{{ url_for('static', filename='img/robot.png') }}" alt="robot clipart">
                     </p>
                 </div>
                 <div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-12 col-12">
@@ -28,35 +30,48 @@
                 </div>
             </div>
             <br>
-            <form>
-                <div class="row">
-                    <div class="col-lg-10 col-md-10 col-sm-9">
-                        <input type="text" class="form-control" placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-3">
-                        <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
-                    </div>
-                </div>
-            </form>
+
         </header>
     </div>
 
     <div class="container">
         <div id="discuss">
             <div class="msg">
-                <p><strong>Grandpy : </strong>Que voulez-vous savoir ?</p>
+                <p><strong>GrandPy : </strong>Que voulez-vous savoir ?</p>
             </div>
         </div>
-    
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores debitis doloremque molestiae?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores debitis doloremque molestiae?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores debitis doloremque molestiae?</p>
+        <form>
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-9">
+                    <input type="text" class="form-control" placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?" autofocus>
+                </div>
+                <!-- ? See if we keep the button or not? -->
+                <div class="col-lg-2 col-md-2 col-sm-3">
+                    <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="googlemaps">
+            <p><strong>{{ GoogleMaps }}</strong></p>
+        </div>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
+            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
+            debitis doloremque molestiae?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
+            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
+            debitis doloremque molestiae?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
+            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
+            debitis doloremque molestiae?</p>
     </div>
 
     <footer>
         <div class="navbar fixed-bottom">
             <p>Vincent Houillon //
-                <a class="btn btn-dark btn-sm" href="https://github.com/vincenthouillon/grandpy_bot" target=_blank>Github</a> //
+                <a class="btn btn-dark btn-sm" href="https://github.com/vincenthouillon/grandpy_bot" target=_blank>Github</a>
+                //
                 &copy 2019 WTFPL
             </p>
         </div>

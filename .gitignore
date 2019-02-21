@@ -9,5 +9,6 @@ instance/
 
 # My personal settings
 .pytest_cache
+.idea
 .vscode
 config.py

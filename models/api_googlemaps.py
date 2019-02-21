@@ -5,6 +5,12 @@ from config import GOOGLEMAPS_API_KEY
 
 class GoogleMapsApi:
     """Class to acces API Google Maps.
+    Example:
+        adress = "OpenClassrooms"
+        gm = GoogleMapsApi()
+        print(gm.geocoding(adress))
+    Result:
+        (48.87473, 2.3483577)
     """
 
     def __init__(self):
