@@ -3,7 +3,7 @@ import re
 
 
 class KillerParser:
-    """Cut the sentence into words to keep only the key words
+    """Cut the sentence into words to keep only the key words.
     
     Example:
         sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
@@ -20,7 +20,7 @@ class KillerParser:
         self.filename2 = 'models/stopwords_perso.json'
 
     def _load_from_file(self, filename, filename2):
-        """Reads and loads JSON files
+        """Reads and loads JSON files.
 
         Arguments:
             filename {str} -- JSON file provided by OpenClassrooms
@@ -35,8 +35,7 @@ class KillerParser:
         return stopwords
 
     def keep_keywords(self, sentence):
-        """Extract the keywords from a sentence
-        """
+        """Extract the keywords from a sentence."""
         keywords = list()
         phrase = sentence.lower()
         data = self._load_from_file(self.filename, self.filename2)
