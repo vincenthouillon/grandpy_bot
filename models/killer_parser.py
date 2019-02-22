@@ -4,10 +4,11 @@ import re
 
 class KillerParser:
     """Cut the sentence into words to keep only the key words
+    
     Example:
         sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-        kp = KillerParser(sentence)
-        print(kp.keep_keywords())
+        kp = KillerParser()
+        print(kp.keep_keywords(sentence))
     Result:
         ['openclassrooms']
     """

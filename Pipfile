@@ -12,6 +12,8 @@ rope = "*"
 flask = "*"
 pytest = "*"
 googlemaps = "*"
+coverage = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"

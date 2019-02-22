@@ -5,6 +5,7 @@ from config import GOOGLEMAPS_API_KEY
 
 class GoogleMapsApi:
     """Class to acces API Google Maps.
+    
     Example:
         adress = "OpenClassrooms"
         gm = GoogleMapsApi()
