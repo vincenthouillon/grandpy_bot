@@ -27,7 +27,6 @@
                     <h2>"Le robot qui vous répond comme si c'était votre grand-père"</h2>
                 </div>
             </div>
-            <br>
 
         </header>
     </div>
@@ -50,20 +49,7 @@
                 </div>
             </div>
         </form>
-
-        <div id="googlemaps">
-            <p><strong>{{ GoogleMaps }}</strong></p>
-        </div>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
-            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
-            debitis doloremque molestiae?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
-            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
-            debitis doloremque molestiae?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eius repellendus officiis reprehenderit ex
-            minima ipsa, dolores quaerat modi quia natus accusantium voluptas assumenda eveniet nulla asperiores
-            debitis doloremque molestiae?</p>
+        <div id="googlemaps"></div>
     </div>
 
     <footer>
@@ -76,6 +62,9 @@
             </p>
         </div>
     </footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLEMAPS_API_KEY }}&callback=myMap"
+    async defer></script>
 </body>
 
 </html>
