@@ -29,29 +29,31 @@ git clone https://github.com/vincenthouillon/grandpy_bot.git
 
 Go to the grandpy_bot folder:
 
-```
+```bash
 cd grandpy_bot
 ```
 
 Install dependencies in the virtual environment:
 
-```
+```python
 pipenv install
 ```
 
 To activate the virtual environment:
-```
+```python
 pipenv shell
 ```
 
 To launch the program with Windows:
-```
-app.py
+
+```python
+run.py
 ```
 
 To launch the program with Unix system:
-```
-python app.py
+
+```python
+python run.py
 ```
 
 And open your browser to the following address '**localhost:5000**'.
@@ -60,15 +62,20 @@ Type '**exit**' to exit the virtual environment.
 
 ## Running the tests
 
-Using '**pytest**'':
+Using '**pytest**':
 
 ### Installation
 
-```
+```bash
 pip install pytest
 ```
+Run tests:
 
-:construction: In progress...
+```python
+pytest -v
+```
+
+![Screenshot](grandpy/static/img/test.png)
 
 ## Deployment
 

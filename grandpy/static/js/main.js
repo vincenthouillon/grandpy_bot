@@ -38,7 +38,7 @@ function myMap(lat, lng) {
     };
     var map = new google.maps.Map(document.getElementById("googlemaps"), options);
 
-    //Marker creation
+    // Marker creation
     var marqueur = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
         map: map

@@ -7,10 +7,10 @@ class GoogleMapsApi:
     """Class to acces API Google Maps.
 
     Example:
-        adress = "OpenClassrooms"
+        address = "OpenClassrooms"
         gm = GoogleMapsApi()
-        print(gm.geocoding(adress))
-    Result:
+        print(gm.geocoding(address))
+    Return a dictionary:
         {'address': '7 Cité Paradis, 75010 Paris, France', 'latitude': 48.8747265, 'longitude': 2.3505517}
     """
 

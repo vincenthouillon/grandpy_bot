@@ -14,10 +14,9 @@ def index():
 def get_json():
     """Return data in JSON Format."""
     return jsonify(
-        latitude=48.874779,
-        longitude=2.350489
+        latitude  = 48.874779,
+        longitude = 2.350489
     )
-
 
 if __name__ == '__main__':
     app.run()

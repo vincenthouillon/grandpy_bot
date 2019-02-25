@@ -4,13 +4,13 @@ import re
 
 class KillerParser:
     """Cut the sentence into words to keep only the key words.
-    
+
     Example:
         sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
         kp = KillerParser()
         print(kp.keep_keywords(sentence))
-    Result:
-        ['openclassrooms']
+    Return a string:
+        openclassrooms
     """
 
     def __init__(self):
@@ -35,7 +35,11 @@ class KillerParser:
         return stopwords
 
     def keep_keywords(self, sentence):
-        """Extract the keywords from a sentence."""
+        """Extract the keywords from a sentence.
+
+        Arguments:
+            sentence {str} -- sentence that we wish to parsre
+        """
         keywords = list()
         phrase = sentence.lower()
         data = self._load_from_file(self.filename, self.filename2)
@@ -45,7 +49,10 @@ class KillerParser:
                 keywords.append(word)
         return (" ".join(keywords))
 
+
 if __name__ == "__main__":
     sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
     kp = KillerParser()
+    kp.filename = 'stopwords_fr.json'
+    kp.filename2 = 'stopwords_perso.json'
     print(kp.keep_keywords(sentence))
