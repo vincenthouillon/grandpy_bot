@@ -17,15 +17,6 @@ function ajaxGet(url, callback) {
     req.send(null);
 };
 
-
-ajaxGet('/get_json', function (response) {
-    let coordinates = JSON.parse(response);
-    var lat = coordinates['latitude'];
-    var lng = coordinates['longitude'];
-    myMap(lat, lng)
-});
-
-
 function myMap(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
     /* Object containing properties with predefined identifiers in Google Maps 
@@ -45,3 +36,76 @@ function myMap(lat, lng) {
 
     });
 };
+
+function scrollBottom() {
+    var messaging = document.getElementById('messaging');
+    messaging.scrollTop = messaging.scrollHeight;
+}
+
+function botMsg(content, showGMap = false) {
+    // Create a div and define the class attribute 'incoming_msg'
+    var newMsg = document.createElement('div');
+    newMsg.setAttribute('class', 'outgoing_msg');
+    // Create a div and define the class attribute 'human' and add this to 'outgoing_msg'
+    var type = document.createElement('div');
+    type.setAttribute('class', 'bot');
+    type.appendChild(document.createTextNode(timeNow() + 'GrandPy :'));
+    newMsg.appendChild(type);
+    // Create a paragraph and add this to 'outgoing_msg'
+    var paragraph = document.createElement('p');
+    paragraph.appendChild(document.createTextNode(content));
+    newMsg.appendChild(paragraph);
+    // Option display Google Maps
+    var showGMap = showGMap;
+    if (showGMap === true) {
+        var showMap = document.createElement('div');
+        showMap.id = 'googlemaps';
+        newMsg.appendChild(showMap);
+        ajaxGet('/get_json', function (response) {
+            var data = JSON.parse(response);
+            var lat = data['latitude'];
+            var lng = data['longitude'];
+            console.log(lat, lng);
+            myMap(lat, lng);
+        });
+    }
+        // Insert 'outgoing_msg' before div'id=new_msg'
+        var msg = document.getElementById('new_msg');
+        var parentDiv = msg.parentNode;
+        parentDiv.insertBefore(newMsg, msg);
+        scrollBottom();
+    }
+
+function humanMsg(content) {
+    var newMsg = document.createElement('div');
+    newMsg.setAttribute('class', 'incoming_msg');
+    var type = document.createElement('div');
+    type.setAttribute('class', 'human');
+    type.appendChild(document.createTextNode(timeNow() + 'Vous :'));
+    newMsg.appendChild(type);
+    var paragraph = document.createElement('p');
+    paragraph.appendChild(document.createTextNode(content));
+    newMsg.appendChild(paragraph);
+    var msg = document.getElementById('new_msg');
+    var parentDiv = msg.parentNode;
+    parentDiv.insertBefore(newMsg, msg);
+    scrollBottom()
+}
+
+function timeNow() {
+    let time = new Date();
+    var hour = time.getHours();
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    var minutes = time.getMinutes();
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+    return '[' + hour + ':' + minutes + '] '
+}
+
+botMsg("Que voulez-vous savoir ?")
+humanMsg("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrroms ?")
+botMsg('Bien sûr mon poussin ! La voici : 7 cité Paradis, 75010 Paris', true)
+botMsg("Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té, une branche débouche au 43 rue de Paradis, la deuxième au 57 rue d'Hauteville et la troisième en impasse. [En savoir plus sur Wikipedia]")

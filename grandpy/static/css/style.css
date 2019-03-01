@@ -1,5 +1,12 @@
 body {
   margin-bottom: 70px;
+  background-color: #F8F8F8;
+}
+a {
+  color: #5b8caa;
+}
+a:hover {
+  text-decoration: none;
 }
 #robot {
   width: 120px;
@@ -16,54 +23,81 @@ header h2 {
   font-size: 1em;
   font-family: 'Gloria Hallelujah', cursive;
 }
-#discuss {
+#messaging {
   text-align: justify;
   overflow: auto;
-  height: 300px;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  height: 70vh;
+  border-top: 1px solid #dddddd;
   padding: 10px;
-  margin: 35px 0 10px 0;
+  margin-top: 35px;
 }
-.msg {
-  padding: 10px 10px 0 10px;
-  line-height: 14px;
-  margin: 8px 0;
-  border: 1px solid #5b8caa;
-  background-color: #5b8caa;
-  color: white;
-  border-radius: 5px;
-  display: inline-block;
+.incoming_msg {
+  margin: 20px 0 20px 20px;
+  color: #5b8caa;
 }
-.form-control {
+.human {
+  font-size: 0.8em;
+  line-height: 10px;
+  margin-bottom: 4px;
+  color: #5b8caa;
+  font-weight: bold;
+}
+.outgoing_msg {
+  color: black;
+}
+.bot {
+  font-size: 0.8em;
+  line-height: 10px;
+  margin-bottom: 4px;
+  color: #b4b4b4;
+  font-weight: bold;
+}
+#form_msg {
+  position: relative;
+}
+.input_msg {
   border: 1px solid #dddddd;
   margin-bottom: 10px;
+  padding: 14px;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 10px 5px #dddddd;
+          box-shadow: 0px 0px 10px 5px #dddddd;
 }
 input::-webkit-input-placeholder {
   font-size: 0.8em;
+  color: #b4b4b4;
 }
 input:-ms-input-placeholder {
   font-size: 0.8em;
+  color: #b4b4b4;
 }
 input::-ms-input-placeholder {
   font-size: 0.8em;
+  color: #b4b4b4;
 }
 input::placeholder {
   font-size: 0.8em;
+  color: #b4b4b4;
 }
-.btn-primary {
+#input_btn {
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  margin-left: -40px;
+  margin-top: 12px;
+  background-image: url(../img/message-plus.png) no-repeat;
   background-color: #5b8caa;
-  border-color: #5b8caa;
-}
-.btn-primary:hover {
-  background-color: #4a7187;
-  border-color: #4a7187;
+  border: none;
+  padding: 0px;
+  -webkit-box-shadow: 0px 0px 10px 2px #5b8caa;
+          box-shadow: 0px 0px 10px 2px #5b8caa;
 }
 #googlemaps {
-  height: 350px;
+  height: 300px;
+  width: 70%;
   display: block;
-  margin-top: 5px;
-  border-radius: 5px;
+  margin: 5px 0 10px 0;
+  border-radius: 20px;
   border: 1px solid #dddddd;
 }
 .navbar {
@@ -104,7 +138,7 @@ input::placeholder {
   header h1 {
     font-size: 1.4em;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   header h2 {
     font-size: 0.9em;
@@ -115,12 +149,16 @@ input::placeholder {
     text-align: center;
     width: 80%;
   }
-  #discuss {
+  #messaging {
     padding: 0 6px 6px 6px;
+    height: 60vh;
   }
-  .msg {
+  .outgoing_msg {
     font-size: 0.9em;
     padding: 2px 4px 0 4px;
+  }
+  #googlemaps {
+    width: 100%;
   }
   input::-webkit-input-placeholder {
     font-size: 0.6em;
@@ -133,9 +171,6 @@ input::placeholder {
   }
   input::placeholder {
     font-size: 0.6em;
-  }
-  .btn-primary {
-    font-size: 0.9em;
   }
   p {
     font-size: 0.8em;

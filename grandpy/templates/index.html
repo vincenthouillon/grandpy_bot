@@ -32,24 +32,21 @@
     </div>
 
     <div class="container">
-        <div id="discuss">
-            <div class="msg">
-                <p><strong>GrandPy : </strong>Que voulez-vous savoir ?</p>
-            </div>
+        <div id="messaging">
+            <div id="new_msg"></div>
         </div>
-        <form>
+        <!-- Form sending message -->
+        <form id="form_msg">
             <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-9">
-                    <input type="text" class="form-control"
+                <div class="col-lg-12">
+                    <input type="text" name="query" class="input_msg"
                         placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?" autofocus>
-                </div>
-                <!-- ? See if we keep the button or not? -->
-                <div class="col-lg-2 col-md-2 col-sm-3">
-                    <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+                    <button type="submit" id="input_btn">
+                        <img id="input_img" src="{{ url_for('static', filename='img/message-plus.png')  }}" alt="Bouton envoyer">
+                    </button>
                 </div>
             </div>
         </form>
-        <div id="googlemaps"></div>
     </div>
 
     <footer>
@@ -58,13 +55,13 @@
                 <a class="btn btn-dark btn-sm" href="https://github.com/vincenthouillon/grandpy_bot"
                     target=_blank>Github</a>
                 //
-                &copy 2019 WTFPL
+                &copy 2019 <a href="http://www.wtfpl.net/" target="_blank">WTFPL</a>
             </p>
         </div>
     </footer>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLEMAPS_API_KEY }}&callback=myMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLEMAPS_API_KEY }}&callback=myMap" async
+        defer></script>
 </body>
 
 </html>

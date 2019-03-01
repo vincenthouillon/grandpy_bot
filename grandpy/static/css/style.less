@@ -1,9 +1,18 @@
 @blue     : #5b8caa;
 @darkblue : #4a7187;
+@grey     : #B4B4B4;
 @lightgrey: #dddddd;
 
 body {
     margin-bottom: 70px;
+    background-color: #F8F8F8;
+}
+
+a {
+    color: @blue;
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 #robot {
@@ -24,50 +33,76 @@ header h2 {
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-#discuss {
+#messaging {
     text-align   : justify;
     overflow     : auto;
-    height       : 300px;
-    border       : 1px solid @lightgrey;
-    border-radius: 5px;
+    height       : 70vh;
+    border-top   : 1px solid @lightgrey;
     padding      : 10px;
-    margin       : 35px 0 10px 0;
+    margin-top   : 35px;
 }
 
-.msg {
-    padding         : 10px 10px 0 10px;
-    line-height     : 14px;
-    margin          : 8px 0;
-    border          : 1px solid @blue;
-    background-color: @blue;
-    color           : white;
-    border-radius   : 5px;
-    display         : inline-block;
+.incoming_msg {
+    margin: 20px 0 20px 20px;
+    color : @blue;
 }
 
-.form-control {
+.human {
+    font-size: 0.8em;
+    line-height: 10px;
+    margin-bottom: 4px;
+    color: @blue;
+    font-weight: bold;
+}
+
+.outgoing_msg {
+    color: black;
+}
+
+.bot {
+    font-size    : 0.8em;
+    line-height  : 10px;
+    margin-bottom: 4px;
+    color        : @grey;
+    font-weight  : bold;
+}
+
+#form_msg {
+    position: relative;
+}
+
+.input_msg {
     border       : 1px solid @lightgrey;
     margin-bottom: 10px;
+    padding      : 14px;
+    width        : 100%;
+    box-shadow   : 0px 0px 10px 5px @lightgrey;
 }
 
 input::placeholder {
     font-size: 0.8em;
+    color    : @grey;
 }
 
-.btn-primary {
+#input_btn {
+    position        : absolute;
+    height          : 32px;
+    width           : 32px;
+    margin-left     : -40px;
+    margin-top      : 12px;
+    background-image: url(../img/message-plus.png) no-repeat;
     background-color: @blue;
-    border-color    : @blue;
-    &:hover {
-        background-color: @darkblue;
-        border-color    : @darkblue;
-    }
+    border          : none;
+    padding         : 0px;
+    box-shadow      : 0px 0px 10px 2px @blue;
 }
 
 #googlemaps {
-    height       : 350px; 
+    height       : 300px;
+    width        : 70%;
     display      : block;
-    margin-top   : 5px;
-    border-radius: 5px;
+    margin       : 5px 0 10px 0;
+    border-radius: 20px;
     border       : 1px solid @lightgrey;
 }
 
@@ -109,7 +144,7 @@ input::placeholder {
     header h1 {
         font-size : 1.4em;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     header h2 {
@@ -123,21 +158,22 @@ input::placeholder {
         width     : 80%;
     }
 
-    #discuss {
+    #messaging {
         padding: 0 6px 6px 6px;
+        height: 60vh;
     }
 
-    .msg {
+    .outgoing_msg {
         font-size: 0.9em;
         padding  : 2px 4px 0 4px;
     }
 
-    input::placeholder {
-        font-size: 0.6em;
+    #googlemaps {
+        width: 100%;
     }
 
-    .btn-primary {
-        font-size: 0.9em;
+    input::placeholder {
+        font-size: 0.6em;
     }
 
     p {
