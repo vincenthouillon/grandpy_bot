@@ -12,4 +12,4 @@ instance/
 .idea
 .vscode
 .coverage
-config
+config/
