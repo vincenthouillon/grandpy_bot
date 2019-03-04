@@ -1,6 +1,6 @@
 # http://py-googlemaps.sourceforge.net/
 import googlemaps
-from config import GOOGLEMAPS_API_KEY
+from grandpy.config.settings import GOOGLEMAPS_API_KEY
 
 
 class GoogleMapsApi:
