@@ -63,10 +63,14 @@ function botMsg(content, showGMap = false) {
         newMsg.appendChild(showMap);
         ajaxGet('/get_json', function (response) {
             var data = JSON.parse(response);
-            var lat = data['latitude'];
-            var lng = data['longitude'];
-            console.log(lat, lng);
-            myMap(lat, lng);
+            // var lat = data['latitude'];
+            // var lng = data['longitude'];
+            var kw = data['keyword'];
+            // var address = data['address'];
+            var history = data['history'];
+
+            console.log(kw,': ',history);
+            // myMap(lat, lng);
         });
     }
         // Insert 'outgoing_msg' before div'id=new_msg'
@@ -105,7 +109,8 @@ function timeNow() {
     return '[' + hour + ':' + minutes + '] '
 }
 
+
 botMsg("Que voulez-vous savoir ?")
 humanMsg("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassroms ?")
-botMsg('Bien sûr mon poussin ! La voici : 7 cité Paradis, 75010 Paris', false)
+botMsg('Bien sûr mon poussin ! La voici : 7 cité Paradis, 75010 Paris', true)
 botMsg("Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té, une branche débouche au 43 rue de Paradis, la deuxième au 57 rue d'Hauteville et la troisième en impasse. [En savoir plus sur Wikipedia]")

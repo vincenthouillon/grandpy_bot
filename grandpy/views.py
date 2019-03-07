@@ -13,39 +13,35 @@ app.config.from_object('grandpy.config.settings')
 # To get one variable, tape app.config['MY_VARIABLE']
 
 
-def data_processing():
-    user_input = request.args.get('query')
-    if user_input:
-        keyword: str = parser.keep_keywords(user_input)
-        geocode: dict = gmap.geocoding(keyword)
-        history: str = wikipedia.searching(keyword)
-        address: str = geocode['address']
-        latitude: str = geocode['latitude']
-        longitude: str = geocode['longitude']
-        #! FOR DEBUG
-        print("*" * 40)
-        print(keyword)
-        print(address)
-        print(latitude)
-        print(longitude)
-        print(history)
-        print("*" * 40)
-    # print(user_input)
-
-
 @app.route('/')
 def index():
-    data_processing()
+    global query 
+    query = request.args.get('query')
+
     return render_template('index.html')
 
 
 @app.route('/get_json')
 def get_json():
     """Return data in JSON Format."""
-    return jsonify(
-        latitude=48.874779,
-        longitude=2.350489
-    )
+    if query != None:
+        sentence = query
+        keyword: str = parser.keep_keywords(sentence)
+        # geocode: dict = gmap.geocoding(keyword)
+        history: str = wikipedia.searching(keyword)
+        # address: str = geocode['address']
+        # latitude: str = geocode['latitude']
+        # longitude: str = geocode['longitude']
+
+        return jsonify(
+            keyword=sentence,
+            # address=address,
+            # longitude=longitude,
+            # latitude=latitude,
+            history=history
+        )
+    else:
+        return render_template('index.html')
 
 
 if __name__ == '__main__':
