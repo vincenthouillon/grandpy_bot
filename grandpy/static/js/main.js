@@ -8,7 +8,7 @@ function ajaxGet(url, callback) {
             // Calls the callback function by passing the response of the request
             callback(req.responseText);
         } else {
-            console.error(req.status + " " + req.statusText + " " + url);
+            console.error(req.status + " - " + req.statusText + " - " + url);
         }
     });
     req.addEventListener("error", function () {
@@ -17,6 +17,29 @@ function ajaxGet(url, callback) {
     req.send(null);
 };
 
+/* AJAX POST */
+function ajaxPost(url, data, callback) {
+    var b = true;
+    var req = new XMLHttpRequest();
+    req.open("POST", url);
+
+    req.addEventListener("load", function () {
+        if (req.status >= 200 && req.status < 400) {
+            // Appelle la fonction callback en lui passant la réponse de la requête
+            callback(req.responseText);
+        } else {
+            console.error(req.status + " " + req.statusText + " " + url);
+        }
+    });
+
+    req.addEventListener("error", function () {
+        console.error("Erreur réseau avec l'URL " + url);
+    });
+
+    req.send(data);
+}
+
+
 function myMap(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
     /* Object containing properties with predefined identifiers in Google Maps 
@@ -24,7 +47,8 @@ function myMap(lat, lng) {
 
     var options = {
         center: latlng,
-        zoom: 19,
+        zoom: 18,
+        disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("googlemaps"), options);
@@ -61,24 +85,13 @@ function botMsg(content, showGMap = false) {
         var showMap = document.createElement('div');
         showMap.id = 'googlemaps';
         newMsg.appendChild(showMap);
-        ajaxGet('/get_json', function (response) {
-            var data = JSON.parse(response);
-            // var lat = data['latitude'];
-            // var lng = data['longitude'];
-            var kw = data['keyword'];
-            // var address = data['address'];
-            var history = data['history'];
-
-            console.log(kw,': ',history);
-            // myMap(lat, lng);
-        });
-    }
-        // Insert 'outgoing_msg' before div'id=new_msg'
-        var msg = document.getElementById('new_msg');
-        var parentDiv = msg.parentNode;
-        parentDiv.insertBefore(newMsg, msg);
-        scrollBottom();
-    }
+    };
+    // Insert 'outgoing_msg' before div'id=new_msg'
+    var msg = document.getElementById('new_msg');
+    var parentDiv = msg.parentNode;
+    parentDiv.insertBefore(newMsg, msg);
+    scrollBottom();
+}
 
 function humanMsg(content) {
     var newMsg = document.createElement('div');
@@ -109,8 +122,28 @@ function timeNow() {
     return '[' + hour + ':' + minutes + '] '
 }
 
+var form = document.querySelector('form');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var data = new FormData(form);
+    if (data.entries().next().value[1]) {
+        ajaxPost('/get_json', data, function (response) {
+            var json_data = JSON.parse(response);
+            var lat = json_data['latitude'];
+            var lng = json_data['longitude'];
+            humanMsg(json_data['sentence']);
+            if (json_data['history'] == null) {
+                botMsg(json_data['error_msg']);
+            } else {
+                botMsg(json_data['address_msg'] + json_data['address'], true);
+                myMap(lat, lng);
+                botMsg(json_data['summary_msg'] + json_data['history']);
+                form.reset();
+            }
+        })
+    } else {
+        botMsg("Hum! Veuillez saisir une question !")
+    }
+});
 
-botMsg("Que voulez-vous savoir ?")
-humanMsg("Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassroms ?")
-botMsg('Bien sûr mon poussin ! La voici : 7 cité Paradis, 75010 Paris', true)
-botMsg("Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té, une branche débouche au 43 rue de Paradis, la deuxième au 57 rue d'Hauteville et la troisième en impasse. [En savoir plus sur Wikipedia]")
+botMsg("Que voulez-vous savoir ?");

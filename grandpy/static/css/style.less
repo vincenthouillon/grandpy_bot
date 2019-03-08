@@ -34,10 +34,15 @@ header h2 {
     font-family: 'Gloria Hallelujah', cursive;
 }
 
+#content {
+    position: relative;
+    height: 60vh;
+}
+
 #messaging {
     text-align: justify;
     overflow  : auto;
-    min-height: 55vh;
+    height    : 100%;
     border-top: 1px solid @lightgrey;
     padding   : 10px;
     margin-top: 35px;
@@ -49,11 +54,11 @@ header h2 {
 }
 
 .human {
-    font-size: 0.8em;
-    line-height: 10px;
+    font-size    : 0.8em;
+    line-height  : 10px;
     margin-bottom: 4px;
-    color: @blue;
-    font-weight: bold;
+    color        : @blue;
+    font-weight  : bold;
 }
 
 .outgoing_msg {
@@ -103,7 +108,7 @@ input::placeholder {
     width        : 70%;
     display      : block;
     margin       : 5px 0 10px 0;
-    border-radius: 20px;
+    border-radius: 25px;
     border       : 1px solid @lightgrey;
 }
 
@@ -129,7 +134,7 @@ input::placeholder {
         font-size: 1em;
     }
 
-    #messaging {
+    #content {
         min-height: 70vh;
     }
 
@@ -163,7 +168,7 @@ input::placeholder {
         width     : 80%;
     }
 
-    #messaging {
+    #content {
         padding: 0 6px 6px 6px;
         min-height: 60vh;
     }

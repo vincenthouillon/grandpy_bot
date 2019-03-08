@@ -23,10 +23,14 @@ header h2 {
   font-size: 1em;
   font-family: 'Gloria Hallelujah', cursive;
 }
+#content {
+  position: relative;
+  height: 60vh;
+}
 #messaging {
   text-align: justify;
   overflow: auto;
-  min-height: 55vh;
+  height: 100%;
   border-top: 1px solid #dddddd;
   padding: 10px;
   margin-top: 35px;
@@ -97,7 +101,7 @@ input::placeholder {
   width: 70%;
   display: block;
   margin: 5px 0 10px 0;
-  border-radius: 20px;
+  border-radius: 25px;
   border: 1px solid #dddddd;
 }
 .navbar {
@@ -117,7 +121,7 @@ input::placeholder {
   header h2 {
     font-size: 1em;
   }
-  #messaging {
+  #content {
     min-height: 70vh;
   }
   input::-webkit-input-placeholder {
@@ -152,7 +156,7 @@ input::placeholder {
     text-align: center;
     width: 80%;
   }
-  #messaging {
+  #content {
     padding: 0 6px 6px 6px;
     min-height: 60vh;
   }

@@ -32,21 +32,24 @@
     </div>
 
     <div class="container">
-        <div id="messaging">
-            <div id="new_msg"></div>
-        </div>
-        <!-- Form sending message -->
-        <form id="form_msg">
-            <div class="row">
-                <div class="col-lg-12">
-                    <input type="text" name="query" class="input_msg"
-                        placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?" autofocus>
-                    <button type="submit" id="input_btn">
-                        <img id="input_img" src="{{ url_for('static', filename='img/message-plus.png')  }}" alt="Bouton envoyer">
-                    </button>
-                </div>
+        <div id="content">
+            <div id="messaging">
+                <div id="new_msg"></div>
             </div>
-        </form>
+            <!-- Form sending message -->
+            <form method="POST" id="form_msg">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="text" name="query" class="input_msg"
+                            placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?" autofocus>
+                        <button type="submit" id="input_btn">
+                            <img id="input_img" src="{{ url_for('static', filename='img/message-plus.png')  }}"
+                                alt="Bouton envoyer">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <footer>
@@ -60,8 +63,8 @@
         </div>
     </footer>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLEMAPS_API_KEY }}&callback=myMap" async
-        defer></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config.GOOGLEMAPS_API_KEY }}&callback=myMap" async
+        defer></script>
 </body>
 
 </html>
