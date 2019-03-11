@@ -1,6 +1,5 @@
 # http://py-googlemaps.sourceforge.net/
 import googlemaps
-from grandpy.config.settings import GOOGLEMAPS_API_KEY
 
 
 class GoogleMapsApi:
@@ -14,8 +13,8 @@ class GoogleMapsApi:
         {'address': '7 Cité Paradis, 75010 Paris, France', 'latitude': 48.8747265, 'longitude': 2.3505517}
     """
 
-    def __init__(self):
-        self.gmaps = googlemaps.Client(key=GOOGLEMAPS_API_KEY)
+    def __init__(self, api_key):
+        self.gmaps = googlemaps.Client(key=api_key)
 
     def geocoding(self, address):
         """Geocoding: convert a postal address to latitude and longitude
@@ -41,5 +40,6 @@ class GoogleMapsApi:
 
 
 if __name__ == "__main__":
-    gm = GoogleMapsApi()
+    from grandpy.config.settings import GOOGLEMAPS_API_KEY
+    gm = GoogleMapsApi(GOOGLEMAPS_API_KEY)
     print(gm.geocoding("Openclassrooms"))

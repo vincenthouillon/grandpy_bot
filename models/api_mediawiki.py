@@ -20,16 +20,16 @@ class MediawikiApi:
         response = self.wikipedia.search(address, results=1)
 
         page = self.wikipedia.page(response[0])
-        learn_more = f" [En savoir plus sur : https://fr.wikipedia.org/wiki/{response[0]}]"
+        wiki_url = 'https://fr.wikipedia.org/wiki/' + response[0]
 
         section = page.sections[0]
         resume = page.section(section).split("\n")
 
         if len(resume) == 1:
             resume = page.summary.split(".")
-            return (".".join(resume[0:3]) + '. ' + learn_more)
+            return (".".join(resume[0:3]),wiki_url)
         else:
-            return (resume[0] + learn_more)
+            return (resume[0:3],wiki_url)
 
 
 if __name__ == "__main__":

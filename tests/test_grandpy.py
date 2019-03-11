@@ -1,4 +1,5 @@
 # https://docs.pytest.org/en/latest/monkeypatch.html
+from grandpy.config.settings import GOOGLEMAPS_API_KEY
 from models.api_googlemaps import GoogleMapsApi
 from models.api_mediawiki import MediawikiApi
 from models.killer_parser import KillerParser
@@ -20,7 +21,7 @@ def test_api_googlemaps(monkeypatch):
 
     monkeypatch.setattr(
         GoogleMapsApi, 'geocoding', mock_geocode)
-    api = GoogleMapsApi()
+    api = GoogleMapsApi(GOOGLEMAPS_API_KEY)
     api_result = api.geocoding("Paris")
 
     assert api_result["address"] == "Paris, France"
@@ -45,6 +46,9 @@ def test_api_mediawiki(monkeypatch):
 def test_killer_parser():
     """The parser killer test."""
     sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
+    address = "7 Cité Paradis, 75010 Paris"
     kp = KillerParser()
-    request = kp.keep_keywords(sentence)
-    assert request == "openclassrooms"
+    test_sentence = kp.sentence_parser(sentence)
+    assert test_sentence == "openclassrooms"
+    test_address = kp.sentence_address(address)
+    assert test_address == "cité paradis paris"

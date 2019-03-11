@@ -17,14 +17,13 @@ a {
 }
 
 #robot {
-    width        : 120px;
-    float        : left;
+    width        : 100px;
     margin-bottom: -30px;
 }
 
 header h1 {
     font-size: 1.8em;
-    padding-top: 44px;
+    margin: 20px 0 5px 20px;
 }
 
 header h2 {
@@ -32,11 +31,12 @@ header h2 {
     font-style : italic;
     font-size  : 1em;
     font-family: 'Gloria Hallelujah', cursive;
+    margin-left: 20px;
 }
 
 #content {
     position: relative;
-    height: 60vh;
+    min-height: 60vh;
 }
 
 #messaging {
@@ -45,7 +45,7 @@ header h2 {
     height    : 100%;
     border-top: 1px solid @lightgrey;
     padding   : 10px;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .incoming_msg {
@@ -71,6 +71,10 @@ header h2 {
     margin-bottom: 4px;
     color        : @grey;
     font-weight  : bold;
+}
+
+#new_msg {
+    margin-top: 40px;
 }
 
 #form_msg {
@@ -108,7 +112,7 @@ input::placeholder {
     width        : 70%;
     display      : block;
     margin       : 5px 0 10px 0;
-    border-radius: 25px;
+    border-radius: 10px;
     border       : 1px solid @lightgrey;
 }
 
@@ -119,23 +123,24 @@ input::placeholder {
     }
 }
 
-@media screen and (max-width: 768px) {
-
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
     #robot {
-        width: 100px;
+        width: 80px;
     }
 
     header h1 {
         font-size : 1.8em;
-        margin-top: -20px;
+        margin-left: 24px;
     }
 
     header h2 {
-        font-size: 1em;
+        font-size: 0.9em;
+        margin-left: 24px;
     }
 
     #content {
-        min-height: 70vh;
+        min-height: 65vh;
     }
 
     input::placeholder {
@@ -143,34 +148,56 @@ input::placeholder {
     }
 }
 
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    header h1 {
+        font-size: 1.4em;
+        margin-left: 5px;
+    }
 
-@media screen and (max-width: 576px) {
+    header h2 {
+        font-size: 0.9em;
+        margin-left: 5px;
+    }
+
+    #content {
+        min-height: 65vh;
+    }
 
     #robot {
+        width: 80px;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media screen and (max-width: 575.98px) {
+#robot {
         width   : 60px;
-        position: absolute;
     }
     
     header h1 {
         font-size : 1.4em;
         text-align: center;
-        margin-top: 15px;
+        margin: 10px 0 0 0;
     }
 
     header h2 {
         font-size    : 0.9em;
         text-align   : center;
-        margin-bottom: -20px;
+        margin: 0 0 -10px 0;
     }
 
     header p {
         text-align: center;
-        width     : 80%;
+    }
+
+    #messaging {
+        margin-top: 20px;
     }
 
     #content {
         padding: 0 6px 6px 6px;
-        min-height: 60vh;
+        min-height: 58vh;
     }
 
     .outgoing_msg {

@@ -66,7 +66,8 @@ function scrollBottom() {
     messaging.scrollTop = messaging.scrollHeight;
 }
 
-function botMsg(content, showGMap = false) {
+function botMsg(content, showGMap = false, toto) {
+    console.log(toto)
     // Create a div and define the class attribute 'incoming_msg'
     var newMsg = document.createElement('div');
     newMsg.setAttribute('class', 'outgoing_msg');
@@ -86,6 +87,14 @@ function botMsg(content, showGMap = false) {
         showMap.id = 'googlemaps';
         newMsg.appendChild(showMap);
     };
+
+    if (typeof toto !== 'undefined') {
+        url_elt = document.createElement('a');
+        url_elt.href = toto;
+        url_elt.appendChild(document.createTextNode(" [En savoir plus sur wikipedia]"));
+        url_elt.setAttribute('target', '_blank');
+        paragraph.appendChild(url_elt);
+    }
     // Insert 'outgoing_msg' before div'id=new_msg'
     var msg = document.getElementById('new_msg');
     var parentDiv = msg.parentNode;
@@ -137,7 +146,7 @@ form.addEventListener('submit', function (event) {
             } else {
                 botMsg(json_data['address_msg'] + json_data['address'], true);
                 myMap(lat, lng);
-                botMsg(json_data['summary_msg'] + json_data['history']);
+                botMsg(json_data['summary_msg'] + json_data['history'], false, json_data['wikilink']);
                 form.reset();
             }
         })
@@ -146,4 +155,4 @@ form.addEventListener('submit', function (event) {
     }
 });
 
-botMsg("Que voulez-vous savoir ?");
+botMsg("Que voulez-vous savoir ?", false);
