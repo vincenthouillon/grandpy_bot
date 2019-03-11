@@ -4,17 +4,17 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+rope = "*"
 autopep8 = "*"
 pylint = "*"
-rope = "*"
+pytest = "*"
+pytest-cov = "*"
+coverage = "*"
 
 [packages]
 flask = "*"
-pytest = "*"
-googlemaps = "*"
-coverage = "*"
-pytest-cov = "*"
 pymediawiki = "*"
+googlemaps = "*"
 
 [requires]
 python_version = "3.7"
