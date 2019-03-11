@@ -23,7 +23,7 @@ a {
 
 header h1 {
     font-size: 1.8em;
-    margin: 20px 0 5px 20px;
+    margin   : 20px 0 5px 20px;
 }
 
 header h2 {
@@ -36,7 +36,23 @@ header h2 {
 
 #content {
     position: relative;
-    min-height: 60vh;
+    height: 60vh;
+}
+
+#loading {
+    border: 10px solid @lightgrey; 
+    border-top: 10px solid @blue; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    display: none;
+    // margin:10px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 #messaging {
@@ -140,7 +156,7 @@ input::placeholder {
     }
 
     #content {
-        min-height: 65vh;
+        height: 65vh;
     }
 
     input::placeholder {
@@ -156,12 +172,12 @@ input::placeholder {
     }
 
     header h2 {
-        font-size: 0.9em;
+        font-size  : 0.9em;
         margin-left: 5px;
     }
 
     #content {
-        min-height: 65vh;
+        height: 65vh;
     }
 
     #robot {
@@ -178,13 +194,13 @@ input::placeholder {
     header h1 {
         font-size : 1.4em;
         text-align: center;
-        margin: 10px 0 0 0;
+        margin    : 10px 0 0 0;
     }
 
     header h2 {
-        font-size    : 0.9em;
-        text-align   : center;
-        margin: 0 0 -10px 0;
+        font-size : 0.9em;
+        text-align: center;
+        margin    : 0 0 -10px 0;
     }
 
     header p {
@@ -196,8 +212,8 @@ input::placeholder {
     }
 
     #content {
-        padding: 0 6px 6px 6px;
-        min-height: 58vh;
+        padding   : 0 6px 6px 6px;
+        height: 58vh;
     }
 
     .outgoing_msg {

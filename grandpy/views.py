@@ -27,8 +27,8 @@ def get_json():
     sentence = request.form['query']
     keyword: str = parser.sentence_parser(sentence)
     geocode: dict = gmap.geocoding(keyword)
-    wiki_fetch = parser.sentence_address(geocode['address'])
     try:
+        wiki_fetch = parser.sentence_address(geocode['address'])
         wiki: str = wikipedia.searching(wiki_fetch)
         wiki_resume: str = wiki[0]
         wiki_url:str = wiki[1]

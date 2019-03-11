@@ -1,22 +1,3 @@
-/* Make an AJAX GET call
-Takes into parameters the target URL and callback function called on success */
-function ajaxGet(url, callback) {
-    var req = new XMLHttpRequest();
-    req.open("GET", url);
-    req.addEventListener("load", function () {
-        if (req.status >= 200 && req.status < 400) {
-            // Calls the callback function by passing the response of the request
-            callback(req.responseText);
-        } else {
-            console.error(req.status + " - " + req.statusText + " - " + url);
-        }
-    });
-    req.addEventListener("error", function () {
-        console.error("Network error with URL " + url);
-    });
-    req.send(null);
-};
-
 /* AJAX POST */
 function ajaxPost(url, data, callback) {
     var b = true;
@@ -25,7 +6,7 @@ function ajaxPost(url, data, callback) {
 
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {
-            // Appelle la fonction callback en lui passant la réponse de la requête
+            // Calls the callback function by passing the response of the request
             callback(req.responseText);
         } else {
             console.error(req.status + " " + req.statusText + " " + url);
@@ -131,11 +112,13 @@ function timeNow() {
     return '[' + hour + ':' + minutes + '] '
 }
 
+
 var form = document.querySelector('form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     var data = new FormData(form);
     if (data.entries().next().value[1]) {
+        document.getElementById('loading').style.display='block';
         ajaxPost('/get_json', data, function (response) {
             var json_data = JSON.parse(response);
             var lat = json_data['latitude'];
@@ -143,10 +126,12 @@ form.addEventListener('submit', function (event) {
             humanMsg(json_data['sentence']);
             if (json_data['history'] == null) {
                 botMsg(json_data['error_msg']);
+                document.getElementById('loading').style.display='none';
             } else {
                 botMsg(json_data['address_msg'] + json_data['address'], true);
                 myMap(lat, lng);
                 botMsg(json_data['summary_msg'] + json_data['history'], false, json_data['wikilink']);
+                document.getElementById('loading').style.display='none';
                 form.reset();
             }
         })
@@ -154,5 +139,6 @@ form.addEventListener('submit', function (event) {
         botMsg("Hum! Veuillez saisir une question !")
     }
 });
+
 
 botMsg("Que voulez-vous savoir ?", false);

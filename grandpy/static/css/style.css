@@ -25,7 +25,37 @@ header h2 {
 }
 #content {
   position: relative;
-  min-height: 60vh;
+  height: 60vh;
+}
+#loading {
+  border: 10px solid #dddddd;
+  border-top: 10px solid #5b8caa;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+  display: none;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 #messaging {
   text-align: justify;
@@ -126,7 +156,7 @@ input::placeholder {
     margin-left: 24px;
   }
   #content {
-    min-height: 65vh;
+    height: 65vh;
   }
   input::-webkit-input-placeholder {
     font-size: 0.6em;
@@ -151,7 +181,7 @@ input::placeholder {
     margin-left: 5px;
   }
   #content {
-    min-height: 65vh;
+    height: 65vh;
   }
   #robot {
     width: 80px;
@@ -179,7 +209,7 @@ input::placeholder {
   }
   #content {
     padding: 0 6px 6px 6px;
-    min-height: 58vh;
+    height: 58vh;
   }
   .outgoing_msg {
     font-size: 0.9em;
