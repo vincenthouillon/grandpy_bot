@@ -9,7 +9,6 @@ from models.killer_parser import KillerParser
 
 app = Flask(__name__)
 gmaps_key = os.environ.get('GMAPS_KEY')
-gmaps = GoogleMapsApi(gmaps_key)
 parser = KillerParser()
 wikipedia = MediawikiApi()
 

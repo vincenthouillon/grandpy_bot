@@ -79,7 +79,7 @@ pytest -v
 
 ## Deployment
 
-This project will have to be deployed on [Heroku]('https://www.heroku.com/').
+This project is visible on [Heroku](https://hv-grandpy.herokuapp.com/).
 
 ## Built With
 
