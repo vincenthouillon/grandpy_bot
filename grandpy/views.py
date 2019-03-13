@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify, render_template, request
 
 import models.messages as msg
@@ -6,7 +8,7 @@ from models.api_googlemaps import GoogleMapsApi
 from models.api_mediawiki import MediawikiApi
 from models.killer_parser import KillerParser
 
-gmaps_key = app.config['GMAPS_KEY']
+gmaps_key = app.config['GMAPS_KEY'] or os.environ.get('GMAPS_KEY')
 gmaps = GoogleMapsApi(gmaps_key)
 parser = KillerParser()
 wikipedia = MediawikiApi()
@@ -14,7 +16,6 @@ wikipedia = MediawikiApi()
 
 @app.route('/')
 def index():
-    print(f"Flask ENV is set to: {app.config['ENV']}")
     return render_template('index.html', gmaps_key = gmaps_key)
 
 
