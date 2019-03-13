@@ -4,9 +4,8 @@
 @lightgrey: #dddddd;
 
 body {
-    // margin-bottom: 70px;
-    background-color: #F8F8F8;
-    min-height      : 100vh;
+    height    : 100%;
+    background: #f5f6fa;
 }
 
 a {
@@ -16,27 +15,45 @@ a {
     }
 }
 
-#robot {
-    width        : 100px;
-    margin-bottom: -30px;
+#logo {
+    width       : 70px;
+    float       : left;
+    margin-right: 10px;
 }
 
 header h1 {
-    font-size: 1.8em;
-    margin   : 20px 0 5px 20px;
+    font-size  : 1.8em;
+    padding-top: 5px;
 }
 
 header h2 {
     color      : @blue;
+    font-size  : 0.9em;
     font-style : italic;
-    font-size  : 1em;
     font-family: 'Gloria Hallelujah', cursive;
-    margin-left: 20px;
+    max-width  : 400px;
 }
 
-#content {
-    position: relative;
-    height: 60vh;
+#project_number {
+    float           : right;
+    margin-top      : -80px;
+    padding         : 0 4px;
+    font-size       : 0.7em;
+    background-color: @lightgrey;
+    border-radius: 4px;
+}
+
+#oc {
+    width        : 12px;
+    margin-bottom: 3px;
+}
+
+.content {
+    border-top: @blue solid 1px;
+    position  : relative;
+    width     : 100%;
+    height    : 75vh;
+    margin-top: 15px;
 }
 
 #loading {
@@ -47,7 +64,6 @@ header h2 {
     height: 40px;
     animation: spin 2s linear infinite;
     display: none;
-    // margin:10px auto;
 }
 
 @keyframes spin {
@@ -56,12 +72,11 @@ header h2 {
 }
 
 #messaging {
-    text-align: justify;
-    overflow  : auto;
-    height    : 100%;
-    border-top: 1px solid @lightgrey;
-    padding   : 10px;
-    margin-top: 10px;
+    position: absolute;
+    overflow: auto;
+    top     : 0;
+    padding : 15px 5px;
+    bottom  : 70px;
 }
 
 .incoming_msg {
@@ -93,152 +108,80 @@ header h2 {
     margin-top: 40px;
 }
 
-#form_msg {
-    position: relative;
+.form_box {
+    position: absolute;
+    bottom  : 80px;
+    left    : 0;
+    right   : 0;
 }
 
-.input_msg {
-    border       : 1px solid @lightgrey;
-    margin-bottom: 10px;
-    padding      : 14px;
-    width        : 100%;
-    box-shadow   : 0px 0px 10px 5px @lightgrey;
+form {
+    border    : none;
+    box-shadow: 0px 0px 20px 1px @darkblue;
+    width     : 100%;
 }
+
+input {
+    height      : 40px;
+    width       : 100%;
+    border      : none;
+    padding-left:  10px;
+}
+
+#btn_send {
+    position: absolute;
+    border: none;
+    background-color: @blue;
+    right: 10px;
+    top: 0px;
+    bottom: 0px;
+}
+
 
 input::placeholder {
     font-size: 0.8em;
     color    : @grey;
 }
 
-#input_btn {
-    position        : absolute;
-    height          : 32px;
-    width           : 32px;
-    margin-left     : -40px;
-    margin-top      : 12px;
-    background-image: url(../img/message-plus.png) no-repeat;
-    background-color: @blue;
-    border          : none;
-    padding         : 0px;
-    box-shadow      : 0px 0px 10px 2px @blue;
-}
-
 #googlemaps {
-    height       : 300px;
-    width        : 70%;
+    height       : 350px;
+    width        : 80%;
     display      : block;
     margin       : 5px 0 10px 0;
     border-radius: 10px;
     border       : 1px solid @lightgrey;
 }
 
-.navbar {
-    background-color: @lightgrey;
-    p {
-        margin-bottom: 0;
-    }
+footer {
+    position: absolute;
+    background-color: @blue;
+    color: white;
+    padding: 6px 10px 0px 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-// Medium devices (tablets, 768px and up)
-@media screen and (min-width: 768px) and (max-width: 991.98px) {
-    #robot {
-        width: 80px;
-    }
-
-    header h1 {
-        font-size : 1.8em;
-        margin-left: 24px;
-    }
-
-    header h2 {
-        font-size: 0.9em;
-        margin-left: 24px;
-    }
-
-    #content {
-        height: 65vh;
-    }
-
-    input::placeholder {
-        font-size: 0.6em;
-    }
+footer p {
+    font-size: 0.8em;
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767.98px) {
+.btn {
+    font-size: 0.9em;
+    padding: 3px;
+}
+
+@media screen and (max-width: 576px) {
     header h1 {
         font-size: 1.4em;
-        margin-left: 5px;
-    }
-
-    header h2 {
-        font-size  : 0.9em;
-        margin-left: 5px;
-    }
-
-    #content {
-        height: 65vh;
-    }
-
-    #robot {
-        width: 80px;
-    }
-}
-
-// Extra small devices (portrait phones, less than 576px)
-@media screen and (max-width: 575.98px) {
-#robot {
-        width   : 60px;
     }
     
-    header h1 {
-        font-size : 1.4em;
-        text-align: center;
-        margin    : 10px 0 0 0;
-    }
-
     header h2 {
-        font-size : 0.9em;
-        text-align: center;
-        margin    : 0 0 -10px 0;
+        font-size: 0.8em;
     }
 
-    header p {
-        text-align: center;
-    }
-
-    #messaging {
-        margin-top: 20px;
-    }
-
-    #content {
-        padding   : 0 6px 6px 6px;
-        height: 58vh;
-    }
-
-    .outgoing_msg {
-        font-size: 0.9em;
-        padding  : 2px 4px 0 4px;
-    }
-
-    #googlemaps {
-        width: 100%;
-    }
 
     input::placeholder {
         font-size: 0.6em;
     }
-
-    p {
-        font-size : 0.8em;
-        margin-top: 10px;
-    }
-
-    footer p {
-        font-size: 0.7em;
-        .btn-dark {
-            font-size: 0.9em;
-        }
-    }
 }
-

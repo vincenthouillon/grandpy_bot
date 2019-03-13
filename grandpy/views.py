@@ -1,24 +1,21 @@
 from flask import Flask, jsonify, render_template, request
 
 import models.messages as msg
-from grandpy.config.settings import GOOGLEMAPS_API_KEY
+from grandpy import app
 from models.api_googlemaps import GoogleMapsApi
 from models.api_mediawiki import MediawikiApi
 from models.killer_parser import KillerParser
 
-app = Flask(__name__)
-gmap = GoogleMapsApi(GOOGLEMAPS_API_KEY)
+gmaps_key = app.config['GMAPS_KEY']
+gmaps = GoogleMapsApi(gmaps_key)
 parser = KillerParser()
 wikipedia = MediawikiApi()
-
-# Config options
-app.config.from_object('grandpy.config.settings')
-# To get one variable, tape app.config['MY_VARIABLE']
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    print(f"Flask ENV is set to: {app.config['ENV']}")
+    return render_template('index.html', gmaps_key = gmaps_key)
 
 
 @app.route('/get_json', methods=['POST'])
@@ -26,19 +23,17 @@ def get_json():
     """Return data in JSON Format."""
     sentence = request.form['query']
     keyword: str = parser.sentence_parser(sentence)
-    geocode: dict = gmap.geocoding(keyword)
+    geocode: dict = gmaps.geocoding(keyword)
     try:
         wiki_fetch = parser.sentence_address(geocode['address'])
         wiki: str = wikipedia.searching(wiki_fetch)
         wiki_resume: str = wiki[0]
-        wiki_url:str = wiki[1]
+        wiki_url: str = wiki[1]
         address: str = geocode['address']
         latitude: str = geocode['latitude']
         longitude: str = geocode['longitude']
     except:
         wiki_resume = wiki_url = address = latitude = longitude = None
-        print('Receipt of data: failed')
-    print('Receipt of data: OK')
 
     return jsonify(
         sentence=sentence,

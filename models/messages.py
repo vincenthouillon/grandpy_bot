@@ -14,7 +14,8 @@ SUMMARY_MSG = [
 
 ERROR_MSG = [
     "Hum, c'est embarassant, as-tu saisi correctement ta demande ? ",
-    "Je ne trouve rien à ce sujet ! As-tu correctement saisi ta demande ? "
+    "Je ne trouve rien à ce sujet ! As-tu correctement saisi ta demande ? ",
+    "(O_o) As-tu saisi correctement ta demade ? "
 ]
 
 

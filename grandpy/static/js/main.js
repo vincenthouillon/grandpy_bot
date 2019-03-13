@@ -47,8 +47,8 @@ function scrollBottom() {
     messaging.scrollTop = messaging.scrollHeight;
 }
 
-function botMsg(content, showGMap = false, toto) {
-    console.log(toto)
+function botMsg(content, showGMap = false, wiki_url) {
+    console.log(wiki_url)
     // Create a div and define the class attribute 'incoming_msg'
     var newMsg = document.createElement('div');
     newMsg.setAttribute('class', 'outgoing_msg');
@@ -69,9 +69,9 @@ function botMsg(content, showGMap = false, toto) {
         newMsg.appendChild(showMap);
     };
 
-    if (typeof toto !== 'undefined') {
+    if (typeof wiki_url !== 'undefined') {
         url_elt = document.createElement('a');
-        url_elt.href = toto;
+        url_elt.href = wiki_url;
         url_elt.appendChild(document.createTextNode(" [En savoir plus sur wikipedia]"));
         url_elt.setAttribute('target', '_blank');
         paragraph.appendChild(url_elt);
@@ -127,6 +127,7 @@ form.addEventListener('submit', function (event) {
             if (json_data['history'] == null) {
                 botMsg(json_data['error_msg']);
                 document.getElementById('loading').style.display='none';
+                form.reset();
             } else {
                 botMsg(json_data['address_msg'] + json_data['address'], true);
                 myMap(lat, lng);

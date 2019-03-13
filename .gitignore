@@ -12,4 +12,6 @@ instance/
 .idea
 .vscode
 .coverage
-config/
+venv
+config.py
+requirements-dev.txt

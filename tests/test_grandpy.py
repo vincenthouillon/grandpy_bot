@@ -1,8 +1,8 @@
 # https://docs.pytest.org/en/latest/monkeypatch.html
-from grandpy.config.settings import GOOGLEMAPS_API_KEY
 from models.api_googlemaps import GoogleMapsApi
 from models.api_mediawiki import MediawikiApi
 from models.killer_parser import KillerParser
+from grandpy.views import app
 
 
 def test_api_googlemaps(monkeypatch):
@@ -21,7 +21,7 @@ def test_api_googlemaps(monkeypatch):
 
     monkeypatch.setattr(
         GoogleMapsApi, 'geocoding', mock_geocode)
-    api = GoogleMapsApi(GOOGLEMAPS_API_KEY)
+    api = GoogleMapsApi(app.config['GMAPS_KEY'])
     api_result = api.geocoding("Paris")
 
     assert api_result["address"] == "Paris, France"
