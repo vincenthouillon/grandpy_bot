@@ -14,12 +14,11 @@ function ajaxPost(url, data, callback) {
     });
 
     req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url);
+        console.error("Network error with URL " + url);
     });
 
     req.send(data);
 }
-
 
 function myMap(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
@@ -32,13 +31,12 @@ function myMap(lat, lng) {
         disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("googlemaps"), options);
+    var map = new google.maps.Map(document.getElementsByClassName("googlemaps")[number], options);
 
     // Marker creation
     var marqueur = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
         map: map
-
     });
 };
 
@@ -47,56 +45,34 @@ function scrollBottom() {
     messaging.scrollTop = messaging.scrollHeight;
 }
 
-function botMsg(content, showGMap = false, wiki_url) {
-    console.log(wiki_url)
-    // Create a div and define the class attribute 'incoming_msg'
+function showMsg(content, bot = true, wikiUrl) {
     var newMsg = document.createElement('div');
-    newMsg.setAttribute('class', 'outgoing_msg');
-    // Create a div and define the class attribute 'human' and add this to 'outgoing_msg'
-    var type = document.createElement('div');
-    type.setAttribute('class', 'bot');
-    type.appendChild(document.createTextNode(timeNow() + 'GrandPy :'));
+    if (bot == false) {
+        newMsg.setAttribute('class', 'incoming_msg');
+        var type = document.createElement('div');
+        type.setAttribute('class', 'human');
+        type.appendChild(document.createTextNode(timeNow() + 'Vous :'));
+    } else {
+        newMsg.setAttribute('class', 'oucoming_msg');
+        var type = document.createElement('div');
+        type.setAttribute('class', 'bot');
+        type.appendChild(document.createTextNode(timeNow() + 'Grandpy :'));
+    }
+
     newMsg.appendChild(type);
-    // Create a paragraph and add this to 'outgoing_msg'
     var paragraph = document.createElement('p');
     paragraph.appendChild(document.createTextNode(content));
     newMsg.appendChild(paragraph);
-    // Option display Google Maps
-    var showGMap = showGMap;
-    if (showGMap === true) {
-        var showMap = document.createElement('div');
-        showMap.id = 'googlemaps';
-        newMsg.appendChild(showMap);
-    };
 
-    if (typeof wiki_url !== 'undefined') {
+    if (typeof wikiUrl !== 'undefined') {
         url_elt = document.createElement('a');
-        url_elt.href = wiki_url;
+        url_elt.href = wikiUrl;
         url_elt.appendChild(document.createTextNode(" [En savoir plus sur wikipedia]"));
         url_elt.setAttribute('target', '_blank');
         paragraph.appendChild(url_elt);
     }
-    // Insert 'outgoing_msg' before div'id=new_msg'
-    var msg = document.getElementById('new_msg');
-    var parentDiv = msg.parentNode;
-    parentDiv.insertBefore(newMsg, msg);
-    scrollBottom();
-}
-
-function humanMsg(content) {
-    var newMsg = document.createElement('div');
-    newMsg.setAttribute('class', 'incoming_msg');
-    var type = document.createElement('div');
-    type.setAttribute('class', 'human');
-    type.appendChild(document.createTextNode(timeNow() + 'Vous :'));
-    newMsg.appendChild(type);
-    var paragraph = document.createElement('p');
-    paragraph.appendChild(document.createTextNode(content));
-    newMsg.appendChild(paragraph);
-    var msg = document.getElementById('new_msg');
-    var parentDiv = msg.parentNode;
-    parentDiv.insertBefore(newMsg, msg);
-    scrollBottom()
+    var reply = document.getElementsByClassName('msg_reply')[0];
+    reply.appendChild(newMsg);
 }
 
 function timeNow() {
@@ -112,34 +88,41 @@ function timeNow() {
     return '[' + hour + ':' + minutes + '] '
 }
 
-
+var number = 0;
 var form = document.querySelector('form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
-    var data = new FormData(form);
-    if (data.entries().next().value[1]) {
-        document.getElementById('loading').style.display='block';
+    var user_input = document.getElementById('queryTxt').value;
+    if (user_input == "") {
+        showMsg("Hum! Veuillez saisir une question !")
+    } else {
+        document.getElementById('loading').style.display = 'block';
+        var data = new FormData(form);
         ajaxPost('/get_json', data, function (response) {
             var json_data = JSON.parse(response);
             var lat = json_data['latitude'];
             var lng = json_data['longitude'];
-            humanMsg(json_data['sentence']);
+            showMsg(json_data['sentence'], false);
             if (json_data['history'] == null) {
-                botMsg(json_data['error_msg']);
-                document.getElementById('loading').style.display='none';
+                showMsg(json_data['error_msg']);
+                document.getElementById('loading').style.display = 'none';
                 form.reset();
             } else {
-                botMsg(json_data['address_msg'] + json_data['address'], true);
+                showMsg(json_data['address_msg'] + json_data['address']);
+                // Option display Google Maps
+                var showMap = document.createElement('div');
+                showMap.className = 'googlemaps';
+                document.getElementsByClassName('msg_reply')[0].appendChild(showMap);
                 myMap(lat, lng);
-                botMsg(json_data['summary_msg'] + json_data['history'], false, json_data['wikilink']);
-                document.getElementById('loading').style.display='none';
+                (function () { number += 1; })();
+
+                showMsg(json_data['summary_msg'] + json_data['history'], true, json_data['wikilink']);
+                document.getElementById('loading').style.display = 'none';
                 form.reset();
+                scrollBottom();
             }
         })
-    } else {
-        botMsg("Hum! Veuillez saisir une question !")
     }
-});
+})
 
-
-botMsg("Que voulez-vous savoir ?", false);
+showMsg("Que voulez-vous savoir ?");

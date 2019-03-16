@@ -16,8 +16,8 @@ class KillerParser:
     def __init__(self):
 
         # self.sentence = sentence
-        self.filename = 'models/stopwords_fr.json'
-        self.filename2 = 'models/stopwords_perso.json'
+        self.filename = 'grandpy/data/stopwords_fr.json'
+        self.filename2 = 'grandpy/data/stopwords_perso.json'
 
     def _load_from_file(self, filename, filename2):
         """Reads and loads JSON files.

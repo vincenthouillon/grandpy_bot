@@ -25,7 +25,7 @@
 
         <div class="content">
             <div id="messaging">
-                <div id="new_msg"></div>
+                <div class="msg_reply"></div>
                 <div id="loading"></div>
             </div>
             <!-- Form sending message -->
@@ -33,7 +33,7 @@
 
         <div class="form_box container">
             <form method="POST">
-                <input type="text" name="query"
+                <input type="text" name="query" id="queryTxt"
                     placeholder="Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?" autofocus>
                 <button type="submit" id="btn_send">
                     <img src="{{ url_for('static', filename='img/message-plus.png')  }}" alt="Bouton envoyer">
@@ -49,6 +49,7 @@
             &copy 2019 <a href="http://www.wtfpl.net/" target="_blank">WTFPL</a>
         </p>
     </footer>
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ gmaps_key }}&callback=myMap" async
         defer></script>

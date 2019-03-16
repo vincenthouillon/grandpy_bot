@@ -37,11 +37,3 @@ class GoogleMapsApi:
             }
         except IndexError:
             return "no result"
-
-if __name__ == "__main__":
-    import os, sys
-    sys.path.append(os.path.dirname(os.getcwd()))
-    from grandpy.views import gmaps_key
-    gm = GoogleMapsApi(gmaps_key)
-    print(gm.geocoding('Openclassrooms'))
-    

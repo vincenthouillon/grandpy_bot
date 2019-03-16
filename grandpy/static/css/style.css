@@ -31,6 +31,7 @@ header h2 {
   font-size: 0.7em;
   background-color: #dddddd;
   border-radius: 4px;
+  border: #b4b4b4 solid 1px;
 }
 #oc {
   width: 12px;
@@ -101,7 +102,7 @@ header h2 {
   color: #b4b4b4;
   font-weight: bold;
 }
-#new_msg {
+#msg_reply {
   margin-top: 40px;
 }
 .form_box {
@@ -146,7 +147,7 @@ input::placeholder {
   font-size: 0.8em;
   color: #b4b4b4;
 }
-#googlemaps {
+.googlemaps {
   height: 350px;
   width: 80%;
   display: block;
