@@ -1,6 +1,5 @@
 /* AJAX POST */
 function ajaxPost(url, data, callback) {
-    var b = true;
     var req = new XMLHttpRequest();
     req.open("POST", url);
 
