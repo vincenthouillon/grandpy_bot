@@ -24,8 +24,8 @@ def index():
     return render_template('index.html', gmaps_key = GMAPS_KEY)
 
 
-@app.route('/get_json', methods=['POST'])
-def get_json():
+@app.route('/process', methods=['POST'])
+def process():
     """Return data in JSON Format."""
     sentence = request.form['query']
     keyword: str = parser.sentence_parser(sentence)

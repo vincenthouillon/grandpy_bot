@@ -98,7 +98,7 @@ form.addEventListener('submit', function (event) {
     } else {
         document.getElementById('loading').style.display = 'block';
         var data = new FormData(form);
-        ajaxPost('/get_json', data, function (response) {
+        ajaxPost('/process', data, function (response) {
             var json_data = JSON.parse(response);
             var lat = json_data['latitude'];
             var lng = json_data['longitude'];
