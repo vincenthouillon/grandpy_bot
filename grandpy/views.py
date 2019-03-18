@@ -29,10 +29,10 @@ def process():
     """Return data in JSON Format."""
     sentence = request.form['query']
     keyword: str = parser.sentence_parser(sentence)
-    geocode: dict = gmaps.geocoding(keyword)
+    geocode: dict = gmaps.geocode(keyword)
     try:
-        wiki_fetch = parser.sentence_address(geocode['address'])
-        wiki: str = wikipedia.searching(wiki_fetch)
+        wiki_fetch = parser.address_parser(geocode['address'])
+        wiki: str = wikipedia.search(wiki_fetch)
         wiki_resume: str = wiki[0]
         wiki_url: str = wiki[1]
         address: str = geocode['address']

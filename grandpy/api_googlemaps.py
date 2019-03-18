@@ -8,7 +8,7 @@ class GoogleMapsApi:
     Example:
         address = "OpenClassrooms"
         gm = GoogleMapsApi()
-        print(gm.geocoding(address))
+        print(gm.geocode(address))
     Return a dictionary:
         {'address': '7 Cité Paradis, 75010 Paris, France', 'latitude': 48.8747265, 'longitude': 2.3505517}
     """
@@ -16,7 +16,7 @@ class GoogleMapsApi:
     def __init__(self, api_key):
         self.gmaps = googlemaps.Client(key=api_key)
 
-    def geocoding(self, address):
+    def geocode(self, address):
         """Geocoding: convert a postal address to latitude and longitude
 
         Arguments:

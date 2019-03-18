@@ -20,10 +20,10 @@ def test_api_googlemaps(monkeypatch):
         }
 
     monkeypatch.setattr(
-        GoogleMapsApi, 'geocoding', mock_geocode)
-    from config import GMAPS_KEY; gmaps_key = GMAPS_KEY  #! DEBUG
+        GoogleMapsApi, 'geocode', mock_geocode)
+    from config import GMAPS_KEY; gmaps_key = GMAPS_KEY
     api = GoogleMapsApi(gmaps_key)
-    api_result = api.geocoding("Paris")
+    api_result = api.geocode("Paris")
 
     assert api_result["address"] == "Paris, France"
     assert api_result["latitude"] == 48.856614
@@ -39,9 +39,9 @@ def test_api_mediawiki(monkeypatch):
         return result
 
     monkeypatch.setattr(
-        MediawikiApi, 'searching', mock_summary)
+        MediawikiApi, 'search', mock_summary)
     wikipedia = MediawikiApi()
-    assert wikipedia.searching('openclassrooms') == result
+    assert wikipedia.search('openclassrooms') == result
 
 
 def test_killer_parser():
@@ -51,5 +51,5 @@ def test_killer_parser():
     kp = KillerParser()
     test_sentence = kp.sentence_parser(sentence)
     assert test_sentence == "openclassrooms"
-    test_address = kp.sentence_address(address)
+    test_address = kp.address_parser(address)
     assert test_address == "cité paradis paris"

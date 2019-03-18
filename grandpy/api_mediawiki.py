@@ -7,7 +7,7 @@ class MediawikiApi:
 
     Example:
         wiki = MediawikiApi()
-        result = wiki.searching('paris')
+        result = wiki.search('paris')
         print(result)
     Return a string:
         Paris [pa.ʁi]  est la capitale de la France. [En savoir plus sur : https://fr.wikipedia.org/wiki/Paris]
@@ -16,7 +16,7 @@ class MediawikiApi:
     def __init__(self):
         self.wikipedia = MediaWiki(url='https://fr.wikipedia.org/w/api.php')
 
-    def searching(self, address):
+    def search(self, address):
         response = self.wikipedia.search(address, results=1)
 
         page = self.wikipedia.page(response[0])
@@ -34,5 +34,5 @@ class MediawikiApi:
 
 if __name__ == "__main__":
     wiki = MediawikiApi()
-    result = wiki.searching('openclassrooms')
+    result = wiki.search('openclassrooms')
     print(result)

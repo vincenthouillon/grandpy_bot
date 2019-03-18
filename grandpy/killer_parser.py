@@ -5,10 +5,10 @@ import re
 class KillerParser:
     """Cut the sentence into words to keep only the key words.
 
-    Example:
+    Example 'sentence_parser':
         sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-        kp = KillerParser()
-        print(kp.keep_keywords(sentence))
+        parser = KillerParser()
+        print(parser.sentence_parser(sentence))
     Return a string:
         openclassrooms
     """
@@ -50,7 +50,7 @@ class KillerParser:
         return (" ".join(keywords))
 
 
-    def sentence_address(self, address):
+    def address_parser(self, address):
         """Extract the keywords from a address.
 
         Arguments:
@@ -69,8 +69,8 @@ class KillerParser:
 if __name__ == "__main__":
     sentence = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
     address = "7 cité paradis, 75010 PARIS"
-    kp = KillerParser()
-    kp.filename = 'stopwords_fr.json'
-    kp.filename2 = 'stopwords_perso.json'
-    print(kp.sentence_parser(sentence))
-    print(kp.sentence_address(address))
+    parser = KillerParser()
+    parser.filename = 'stopwords_fr.json'
+    parser.filename2 = 'stopwords_perso.json'
+    print(parser.sentence_parser(sentence))
+    print(parser.address_parser(address))
