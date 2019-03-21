@@ -14,22 +14,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-```
-Python 3.x
-```
+> Python 3.x
+
 
 ### Installing
 
 Clone this repository to your local machine:
-```
+```console
 git clone https://github.com/vincenthouillon/grandpy_bot.git
 ```
 
-### Example with '**pipenv**'
+### Example with '**venv**'
 
 Go to the grandpy_bot folder:
 
-```bash
+```console
 cd grandpy_bot
 ```
 
@@ -39,9 +38,11 @@ Install dependencies in the virtual environment:
 pipenv install
 ```
 
-To activate the virtual environment:
-```python
-pipenv shell
+To install and activate the virtual environment:
+```console
+python -m venv venv
+python venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 To launch the program with Windows:
@@ -58,15 +59,18 @@ python run.py
 
 And open your browser to the following address '**localhost:5000**'.
 
-Type '**exit**' to exit the virtual environment.
+For disable the virtal environnement, enter:
+```console
+deactivate
+```
 
 ## Running the tests
 
-Using '**pytest**':
+> Using '**pytest**':
 
 ### Installation
 
-```bash
+```console
 pip install pytest
 ```
 Run tests:
@@ -79,11 +83,11 @@ pytest -v
 
 ## Deployment
 
-This project is visible on [Heroku](https://hv-grandpy.herokuapp.com/).
+> This project is visible on [Heroku](https://hv-grandpy.herokuapp.com/).
 
 ## Built With
 
-* [Python3](https://www.python.org/) - Python is a programming language that lets you work quickly and integrate systems more effectively.
+* [Python 3.7](https://www.python.org/) - Python is a programming language that lets you work quickly and integrate systems more effectively.
 * [Flask](http://flask.pocoo.org/) - Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions.
 
 ## API Reference

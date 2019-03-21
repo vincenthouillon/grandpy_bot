@@ -21,7 +21,8 @@ def test_api_googlemaps(monkeypatch):
 
     monkeypatch.setattr(
         GoogleMapsApi, 'geocode', mock_geocode)
-    from config import GMAPS_KEY; gmaps_key = GMAPS_KEY
+    from config import GMAPS_KEY
+    gmaps_key = GMAPS_KEY
     api = GoogleMapsApi(gmaps_key)
     api_result = api.geocode("Paris")
 
